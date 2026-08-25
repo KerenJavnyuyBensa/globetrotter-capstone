@@ -1,0 +1,93 @@
+{
+  "users": [
+    {
+      "id": "adb349a5-57f4-4d0e-9555-eea726f31a27",
+      "username": "Keren",
+      "email": "keren@gmail.com",
+      "password": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92"
+    },
+    {
+      "id": "cfa3faca-f7b7-428b-9c50-24f7a4eb69a4",
+      "username": "Keren",
+      "email": "keren@test.com",
+      "password": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92"
+    },
+    {
+      "id": "190ccf06-2c4f-43c8-840b-2f0b652a1f87",
+      "username": "Rose",
+      "email": "rose@test.com",
+      "password": "ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f",
+      "role": "Student"
+    },
+    {
+      "id": "2b0cd897-2d8b-4983-a012-981012264f21",
+      "username": "TestUser",
+      "email": "testuser2026@gmail.com",
+      "password": "$2b$10$ikaGnPB4jRkDq4p6aOn9cu9p5g65lQBPFSM/WLnKgqG4yRIihIq2u",
+      "role": "Student"
+    },
+    {
+      "id": "049e1c15-0e2f-4d91-8dba-9b4641bc687b",
+      "username": "WebsiteTest",
+      "email": "websitetest@gmail.com",
+      "password": "$2b$10$wxdfAsmEX./IcA2Vz0aekO8gQQ5KizgpyavuDraJFO0DkfOZCZr56",
+      "role": "Student"
+    }
+  ],
+  "destinations": [
+    {
+      "id": 1,
+      "name": "Paris",
+      "country": "France",
+      "category": "City",
+      "description": "The City of Light"
+    },
+    {
+      "id": 2,
+      "name": "Dubai",
+      "country": "UAE",
+      "category": "Luxury",
+      "description": "Modern city with world-class attractions"
+    },
+    {
+      "id": 3,
+      "name": "Cape Town",
+      "country": "South Africa",
+      "category": "Beach",
+      "description": "Beautiful coastline and mountains"
+    },
+    {
+      "id": 1785411307403,
+      "name": "Nairobi",
+      "country": "Kenya",
+      "category": "Wildlife",
+      "description": "Safari and national parks"
+    }
+  ],
+  "itineraries": [
+    {
+      "id": 1,
+      "userId": "adb349a5-57f4-4d0e-9555-eea726f31a27",
+      "destination": "Paris",
+      "days": 5
+    },
+    {
+      "id": "eb267252-268b-479f-9561-c3fb21c863aa",
+      "userId": "cfa3faca-f7b7-428b-9c50-24f7a4eb69a4",
+      "destination": "Paris",
+      "days": 5
+    },
+    {
+      "id": "92ed33d8-25d9-4859-a314-36fe8f3239fb",
+      "userId": "adb349a5-57f4-4d0e-9555-eea726f31a27",
+      "destination": "Nairobi",
+      "days": 4
+    },
+    {
+      "id": "5d602d4c-3fd3-4153-a8bf-6b571eb3b097",
+      "userId": "2b0cd897-2d8b-4983-a012-981012264f21",
+      "destination": "Paris",
+      "days": 5
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+ {
+  "name": "globetrotter",
+  "version": "1.0.0",
+  "description": "GlobeTrotter Microservices",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm start --prefix auth-service\" \"npm start --prefix destination-service\" \"npm start --prefix itinerary-service\" \"npm start --prefix recommendation-service\" \"npm start --prefix api-gateway\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
