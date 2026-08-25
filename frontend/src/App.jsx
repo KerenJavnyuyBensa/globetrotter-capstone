@@ -1,36 +1,20 @@
-`import { BrowserRouter, Routes, Route } from "react-router-dom";
-`
-import Navbar from "./components/Navbar";
+ import { BrowserRouter, Routes, Route } from "react-router-dom";
+import NavBar from "./Components/NavBar";
 
-import Home from "./pages/Home";
-import Register from "./pages/Register";
-import Login from "./pages/Login";
+import Home from "./Pages/Home";
+import Register from "./Pages/Register";
+import Login from "./Pages/Login";
 
 function App() {
   return (
     <BrowserRouter>
-
-      <Navbar />
+      <NavBar />
 
       <Routes>
-
-        <Route 
-          path="/" 
-          element={<Home />} 
-        />
-
-        <Route 
-          path="/register" 
-          element={<Register />} 
-        />
-
-        <Route 
-          path="/login" 
-          element={<Login />} 
-        />
-
+        <Route path="/" element={<Home />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
-
     </BrowserRouter>
   );
 }
