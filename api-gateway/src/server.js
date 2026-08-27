@@ -58,7 +58,7 @@ app.get("/recommendations", async (req, res) => {
 });
 
 // ============================
-// ITINERARY SERVICE
+// GET ITINERARIES
 // ============================
 app.get("/itineraries", async (req, res) => {
     try {
@@ -78,10 +78,39 @@ app.get("/itineraries", async (req, res) => {
 });
 
 // ============================
+// CREATE ITINERARY
+// ============================
+app.post("/itineraries", async (req, res) => {
+    try {
+        const response = await fetch(
+            "http://localhost:5003/itineraries",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(req.body)
+            }
+        );
+
+        const data = await response.json();
+
+        res.status(response.status).json(data);
+    } catch (error) {
+        res.status(502).json({
+            message: "Itinerary Service unavailable",
+            error: error.message
+        });
+    }
+});
+
+// ============================
 // START SERVER
 // ============================
 const PORT = 5000;
 
 app.listen(PORT, () => {
-    console.log(`API Gateway running on http://localhost:${PORT}`);
+    console.log(
+        `API Gateway running on http://localhost:${PORT}`
+    );
 });
