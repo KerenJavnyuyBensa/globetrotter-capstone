@@ -1,87 +1,80 @@
-  const crypto = require("crypto");
+const crypto = require("crypto");
 
 const { readData, writeData } = require("../utils/dataAccess");
 
-
-// =======================
 // CREATE ITINERARY
-// =======================
 exports.createItinerary = (req, res) => {
-
     try {
+        const { destination, days } = req.body;
 
-        const {
-            userId,
-            destination,
-            days
-        } = req.body;
+        // Get the logged-in user's ID from the JWT
+        const userId = req.user.id;
 
-
-        // Validation
-        if (!userId || !destination || !days) {
+        if (!destination || !days) {
             return res.status(400).json({
-                error: "userId, destination, and days are required"
+                message: "Destination and number of days are required"
             });
         }
 
-
         const data = readData();
 
+        // Make sure itineraries exists
+        if (!Array.isArray(data.itineraries)) {
+            data.itineraries = [];
+        }
 
         const newItinerary = {
             id: crypto.randomUUID(),
-            userId,
-            destination,
-            days
+            userId: userId,
+            destination: destination,
+            days: Number(days),
+            createdAt: new Date().toISOString()
         };
 
-
-        // Save to JSON file
         data.itineraries.push(newItinerary);
 
         writeData(data);
 
-
-        res.status(201).json({
+        return res.status(201).json({
             message: "Itinerary created successfully",
             itinerary: newItinerary
         });
 
-
     } catch (error) {
+        console.error("Create itinerary error:", error);
 
-        res.status(500).json({
+        return res.status(500).json({
             message: error.message
         });
-
     }
-
 };
 
 
-
-// =======================
-// GET ALL ITINERARIES
-// =======================
+// GET USER ITINERARIES
 exports.getItineraries = (req, res) => {
-
     try {
+        const userId = req.user.id;
 
         const data = readData();
 
+        if (!Array.isArray(data.itineraries)) {
+            data.itineraries = [];
+        }
 
-        res.status(200).json({
-            message: "All itineraries",
-            itineraries: data.itineraries
+        const userItineraries = data.itineraries.filter(
+            itinerary => itinerary.userId === userId
+        );
+
+        return res.status(200).json({
+            message: "User itineraries",
+            itineraries: userItineraries
         });
-
 
     } catch (error) {
+        console.error("Get itineraries error:", error);
 
-        res.status(500).json({
+        return res.status(500).json({
             message: error.message
         });
-
     }
-
 };

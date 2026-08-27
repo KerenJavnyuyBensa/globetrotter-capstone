@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Paris",
+    "country": "France",
+    "continent": "Europe",
+    "description": "The City of Light",
+    "tags": ["city", "culture", "food"],
+    "avg_cost_per_day": 150
+  },
+  {
+    "name": "Dubai",
+    "country": "UAE",
+    "continent": "Asia",
+    "description": "Modern city with world-class attractions",
+    "tags": ["luxury", "shopping", "city"],
+    "avg_cost_per_day": 250
+  },
+  {
+    "name": "Cape Town",
+    "country": "South Africa",
+    "continent": "Africa",
+    "description": "Beautiful coastline and mountains",
+    "tags": ["beach", "nature", "adventure"],
+    "avg_cost_per_day": 120
+  },
+  {
+    "name": "Nairobi",
+    "country": "Kenya",
+    "continent": "Africa",
+    "description": "Safari and national parks",
+    "tags": ["wildlife", "nature", "adventure"],
+    "avg_cost_per_day": 100
+  }
+]

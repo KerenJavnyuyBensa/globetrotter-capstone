@@ -32,6 +32,27 @@
       "email": "websitetest@gmail.com",
       "password": "$2b$10$wxdfAsmEX./IcA2Vz0aekO8gQQ5KizgpyavuDraJFO0DkfOZCZr56",
       "role": "Student"
+    },
+    {
+      "id": "39fc6023-87ff-48d0-af5d-655ecd2c0c08",
+      "username": "Tester User",
+      "email": "test@example.com",
+      "password": "$2b$10$bb4bP2nqObW8P8KTBCHPyOkX8EqLFcNb3Ozvqj3df22jlidj3Nu6K",
+      "role": "Student"
+    },
+    {
+      "id": "cab95246-c950-4b83-8461-e5bced8f8df9",
+      "username": "Keren2",
+      "email": "keren2026@gamil.com",
+      "password": "$2b$10$zlXAW3akyice0lN/kSRKxO5FuS6Ff7F.DKsS.WWD1hc/0LoxPDDfe",
+      "role": "Student"
+    },
+    {
+      "id": "ac7df532-c15a-475c-9b95-bd7f8b47a119",
+      "username": "Keren",
+      "email": "keren2026@gmail.com",
+      "password": "$2b$10$3vcTzeIV3wu0abD65jY8Ge79fwE.pT1wvjvs6YuDpPjscto5hqyYu",
+      "role": "Student"
     }
   ],
   "destinations": [
@@ -88,6 +109,46 @@
       "userId": "2b0cd897-2d8b-4983-a012-981012264f21",
       "destination": "Paris",
       "days": 5
+    },
+    {
+      "id": "dc1da64d-dda1-48fc-9e30-8e9abe8df977",
+      "userId": "39fc6023-87ff-48d0-af5d-655ecd2c0c08",
+      "destination": "Paris",
+      "days": 2
+    },
+    {
+      "id": "3c49c922-ecd5-4460-afdf-546f7143e22e",
+      "userId": "39fc6023-87ff-48d0-af5d-655ecd2c0c08",
+      "destination": "Cape Town",
+      "days": 8
+    },
+    {
+      "id": "cfd4700d-3adc-4f15-9221-370617f53ae8",
+      "userId": "ac7df532-c15a-475c-9b95-bd7f8b47a119",
+      "destination": "Paris",
+      "days": 3,
+      "createdAt": "2026-08-26T16:07:11.281Z"
+    },
+    {
+      "id": "0b539eed-757f-4773-b39d-44e4bb4ef417",
+      "userId": "ac7df532-c15a-475c-9b95-bd7f8b47a119",
+      "destination": "Paris",
+      "days": 5,
+      "createdAt": "2026-08-26T16:11:27.987Z"
+    },
+    {
+      "id": "b3967692-f0db-4943-97e6-d2aad3d9d946",
+      "userId": "ac7df532-c15a-475c-9b95-bd7f8b47a119",
+      "destination": "Paris",
+      "days": 5,
+      "createdAt": "2026-08-26T16:20:42.751Z"
+    },
+    {
+      "id": "ba17da78-bccb-4734-a64a-bd7bb6390851",
+      "userId": "ac7df532-c15a-475c-9b95-bd7f8b47a119",
+      "destination": "Paris",
+      "days": 5,
+      "createdAt": "2026-08-27T08:50:34.110Z"
     }
   ]
 }

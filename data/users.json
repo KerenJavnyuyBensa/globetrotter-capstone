@@ -1,0 +1,8 @@
+[
+  {
+    "id": "6bd81226-00ac-471e-bcd4-e11092700a98",
+    "username": "demo_user",
+    "password_hash": "pbkdf2:sha256:600000$rskJghSzD4XV7GGt$b1f856f9e903065ae266a41f94fb7989ebcd311795d713c7c74e6cc7caa67307",
+    "preferences": []
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "id": "5b13fe5d-677c-4625-8cf5-0b007bfe8569",
+    "username": "demo_user",
+    "title": "My Cameroon to Europe Trip",
+    "destinations": [
+      "Paris",
+      "Cape Town"
+    ],
+    "start_date": "2026-09-10",
+    "end_date": "2026-09-17",
+    "notes": "Explore Paris and enjoy the beautiful coastline of Cape Town.",
+    "created_at": "2026-08-26T14:23:11.845420+00:00"
+  }
+]

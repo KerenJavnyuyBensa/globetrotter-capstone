@@ -1,20 +1,15 @@
-# Use an official lightweight Python runtime as the base image
-FROM python:3.9-slim
+FROM node:24
 
-# Set a working directory inside the container
 WORKDIR /globetrotter
 
-# Copy dependency file first to leverage Docker layer caching
-COPY requirements.txt .
+COPY backend/package*.json ./backend/
 
-# Install dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+WORKDIR /globetrotter/backend
 
-# Copy the application source code
-COPY . .
+RUN npm install
 
-# Expose the port the app runs on
+COPY backend/ .
+
 EXPOSE 5000
 
-# Run the application
-CMD ["python", "app/main.py"]
+CMD ["npm", "start"]
