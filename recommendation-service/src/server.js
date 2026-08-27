@@ -6,89 +6,71 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// ============================
-// CONFIGURATION
-// ============================
-
-const PORT = 5004;
-const DESTINATION_SERVICE_URL =
-    "http://localhost:5002/destinations";
-
-// ============================
+// =====================================================
 // HOME ROUTE
-// ============================
+// =====================================================
 
 app.get("/", (req, res) => {
-    res.json({
-        message: "Recommendation Service is running",
-        service: "recommendation-service",
-        port: PORT
-    });
+  res.json({
+    message: "Recommendation Service is running",
+    service: "recommendation-service",
+    port: 5004,
+  });
 });
 
-// ============================
+// =====================================================
 // GET RECOMMENDATIONS
-// ============================
+// Get destinations from Destination Service
+// =====================================================
 
 app.get("/recommendations", async (req, res) => {
-    try {
+  try {
+    const response = await fetch(
+      "http://localhost:5002/destinations"
+    );
 
-        // Get destinations from Destination Service
-        const response = await fetch(
-            DESTINATION_SERVICE_URL
-        );
-
-        if (!response.ok) {
-            throw new Error(
-                `Destination Service returned ${response.status}`
-            );
-        }
-
-        const destinations = await response.json();
-
-        // Make sure we received an array
-        if (!Array.isArray(destinations)) {
-            throw new Error(
-                "Invalid destination data received"
-            );
-        }
-
-        // For now, return all available destinations.
-        // Later we can add personalized scoring.
-        const recommendations = destinations.map(
-            (destination) => ({
-                ...destination,
-                match_score: 100
-            })
-        );
-
-        res.status(200).json({
-            message: "Recommended destinations",
-            count: recommendations.length,
-            recommendations
-        });
-
-    } catch (error) {
-
-        console.error(
-            "Recommendation Service Error:",
-            error.message
-        );
-
-        res.status(502).json({
-            message:
-                "Unable to get recommendations from Destination Service",
-            error: error.message
-        });
+    if (!response.ok) {
+      throw new Error(
+        `Destination Service returned status ${response.status}`
+      );
     }
+
+    const destinations = await response.json();
+
+    // Give every destination a basic match score.
+    // Later we can make this personalized based on
+    // the user's preferences.
+    const recommendations = destinations.map((destination) => ({
+      ...destination,
+      match_score: 100,
+    }));
+
+    res.status(200).json({
+      message: "Recommended destinations",
+      count: recommendations.length,
+      recommendations: recommendations,
+    });
+  } catch (error) {
+    console.error(
+      "Recommendation Service Error:",
+      error.message
+    );
+
+    res.status(502).json({
+      message: "Destination Service unavailable",
+      error: error.message,
+    });
+  }
 });
 
-// ============================
+// =====================================================
 // START SERVER
-// ============================
+// =====================================================
+
+const PORT = 5004;
 
 app.listen(PORT, () => {
-    console.log(
-        `Recommendation Service running on http://localhost:${PORT}`
-    );
+  console.log(
+    `Recommendation Service running on http://localhost:${PORT}`
+  );
 });
