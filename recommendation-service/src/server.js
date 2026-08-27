@@ -6,57 +6,89 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Destination data used for recommendations
-const destinations = [
-    {
-        id: 1,
-        name: "Paris",
-        country: "France",
-        category: "City",
-        description: "The City of Light"
-    },
-    {
-        id: 2,
-        name: "Dubai",
-        country: "UAE",
-        category: "Luxury",
-        description: "Modern city with world-class attractions"
-    },
-    {
-        id: 3,
-        name: "Cape Town",
-        country: "South Africa",
-        category: "Beach",
-        description: "Beautiful coastline and mountains"
-    },
-    {
-        id: 1785411307403,
-        name: "Nairobi",
-        country: "Kenya",
-        category: "Wildlife",
-        description: "Safari and national parks"
-    }
-];
+// ============================
+// CONFIGURATION
+// ============================
 
-// Test route
+const PORT = 5004;
+const DESTINATION_SERVICE_URL =
+    "http://localhost:5002/destinations";
+
+// ============================
+// HOME ROUTE
+// ============================
+
 app.get("/", (req, res) => {
     res.json({
         message: "Recommendation Service is running",
         service: "recommendation-service",
-        port: 5004
+        port: PORT
     });
 });
 
-// GET recommendations
-app.get("/recommendations", (req, res) => {
-    res.status(200).json({
-        message: "Recommended destinations",
-        recommendations: destinations
-    });
+// ============================
+// GET RECOMMENDATIONS
+// ============================
+
+app.get("/recommendations", async (req, res) => {
+    try {
+
+        // Get destinations from Destination Service
+        const response = await fetch(
+            DESTINATION_SERVICE_URL
+        );
+
+        if (!response.ok) {
+            throw new Error(
+                `Destination Service returned ${response.status}`
+            );
+        }
+
+        const destinations = await response.json();
+
+        // Make sure we received an array
+        if (!Array.isArray(destinations)) {
+            throw new Error(
+                "Invalid destination data received"
+            );
+        }
+
+        // For now, return all available destinations.
+        // Later we can add personalized scoring.
+        const recommendations = destinations.map(
+            (destination) => ({
+                ...destination,
+                match_score: 100
+            })
+        );
+
+        res.status(200).json({
+            message: "Recommended destinations",
+            count: recommendations.length,
+            recommendations
+        });
+
+    } catch (error) {
+
+        console.error(
+            "Recommendation Service Error:",
+            error.message
+        );
+
+        res.status(502).json({
+            message:
+                "Unable to get recommendations from Destination Service",
+            error: error.message
+        });
+    }
 });
 
-const PORT = 5004;
+// ============================
+// START SERVER
+// ============================
 
 app.listen(PORT, () => {
-    console.log(`Recommendation Service running on http://localhost:${PORT}`);
+    console.log(
+        `Recommendation Service running on http://localhost:${PORT}`
+    );
 });
